@@ -1,0 +1,20 @@
+# ONLYOFFICE Document Server — Community Edition (gratis, AGPL)
+# Documentazione: https://github.com/ONLYOFFICE/Docker-DocumentServer
+
+services:
+  onlyoffice-documentserver:
+    image: onlyoffice/documentserver:latest
+    container_name: ufficio-onlyoffice
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      # Cambia in produzione con una stringa lunga e casuale
+      - JWT_ENABLED=false
+    volumes:
+      - onlyoffice_data:/var/www/onlyoffice/Data
+      - onlyoffice_logs:/var/log/onlyoffice
+
+volumes:
+  onlyoffice_data:
+  onlyoffice_logs:
